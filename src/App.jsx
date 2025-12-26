@@ -75,7 +75,7 @@ function App() {
   });
 
   useEffect(() => {
-    const fechaInicio = new Date("2024-09-17T18:30:00"); // He corregido el año a 2024 para que el contador tenga sentido hoy
+    const fechaInicio = new Date("2025-09-17T18:30:00");
     const interval = setInterval(() => {
       const ahora = new Date();
       const diff = ahora - fechaInicio;
