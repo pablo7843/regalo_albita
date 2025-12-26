@@ -1,0 +1,277 @@
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #1a1a1a;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+  padding: 60px 25px;
+  box-sizing: border-box;
+}
+
+header h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(3.5rem, 12vw, 5.5rem);
+  margin-bottom: 20px;
+  color: #ff4d6d;
+  text-shadow: 0px 5px 20px rgba(255, 77, 109, 0.5);
+}
+
+.contador-box {
+  margin-top: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 77, 109, 0.2);
+}
+
+.contador-numeros {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  font-weight: 700;
+}
+.contador-numeros span {
+  color: #ff4d6d;
+  font-size: 1.8rem;
+}
+
+/* --- ESTILOS LÍNEA DEL TIEMPO CONECTADA --- */
+.timeline-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  margin: 100px auto 60px auto;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-line-visual {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 77, 109, 0.3);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.timeline-dots-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.timeline-dot {
+  background: #ff4d6d;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 4px solid #1a1a1a;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+  padding: 0;
+}
+
+.dot-text {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* --- RESTO DE ESTILOS --- */
+.seccion-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.btn-carta-especial {
+  background: linear-gradient(45deg, #d4af37, #f9e29c);
+  color: #1a1a1a;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 50px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  max-width: 350px;
+}
+
+.btn-polonia,
+.btn-celebrar {
+  color: white;
+  padding: 18px 35px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  max-width: 350px;
+  border: none;
+}
+.btn-polonia {
+  background: #2d3436;
+  border: 2px solid #0984e3;
+}
+.btn-celebrar {
+  background: #ff4d6d;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(12px);
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.modal-content,
+.carta-navidena {
+  width: 100%;
+  max-width: 650px;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content {
+  background: #2a2a2a;
+  padding: 35px;
+  border: 2px solid rgba(255, 77, 109, 0.4);
+  font-family: "Quicksand", sans-serif;
+}
+.modal-content h3 {
+  color: #ff4d6d;
+  font-family: "Dancing Script", cursive;
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+.modal-content p {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+}
+
+.carta-navidena {
+  background: #fdf5e6;
+  color: #2c3e50;
+  padding: 40px;
+  border-left: 6px solid #b22222;
+}
+.carta-navidena h2,
+.texto-carta,
+.firma {
+  font-family: "Dancing Script", cursive;
+}
+.carta-navidena h2 {
+  font-size: 2.8rem;
+  color: #b22222;
+}
+.texto-carta {
+  font-size: 1.7rem;
+  text-align: left;
+  line-height: 1.4;
+}
+.firma {
+  font-size: 2rem;
+  align-self: flex-end;
+  color: #b22222;
+}
+
+.fotos-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.foto-individual {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.destinos-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+.destinos-tags span {
+  background: #0984e3;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.close-btn {
+  margin-top: 30px;
+  padding: 15px 45px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  max-width: 250px;
+}
+.modal-content .close-btn {
+  background: #ff4d6d;
+  color: white;
+}
+.btn-carta-close {
+  background: #b22222;
+  color: white;
+}
+
+@media (min-width: 700px) {
+  .fotos-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .fotos-grid .foto-individual {
+    width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 600px) {
+  .dot-text {
+    font-size: 0.8rem;
+    top: 30px;
+  }
+}
