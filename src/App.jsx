@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 
 // Fotos
@@ -84,10 +85,11 @@ function App() {
   const [recuerdoActivo, setRecuerdoActivo] = useState(null);
   const [mostrarCarta, setMostrarCarta] = useState(false);
   const [tiempo, setTiempo] = useState({ dias: 0, horas: 0, minutos: 0, segundos: 0 });
+  const navigate = useNavigate();
 
   /* Script oficial TikTok */
   useEffect(() => {
-    const script = document.createElement("script");
+    const script = document.createElement("script");  
     script.src = "https://www.tiktok.com/embed.js";
     script.async = true;
     document.body.appendChild(script);
@@ -127,7 +129,16 @@ function App() {
             <span>{tiempo.segundos}s</span>
           </div>
         </div>
+        <motion.button
+          className="btn-sanvalentin"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => navigate("/sanvalentin")}
+        >
+          💘 Pulsar aquí
+      </motion.button>
       </header>
+
 
       {/* TIMELINE */}
       <div className="timeline-wrapper">

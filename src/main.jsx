@@ -1,12 +1,18 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-// import SnowFall from 'react-snowfall'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
 
-createRoot(document.getElementById('root')).render(
+import App from "./App.jsx";
+import SanValentin from "./SanValentin.jsx";
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <SnowFall color='white' snowflakeCount={500}/> */}
-    <App />
-  </StrictMode>,
-)
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/sanvalentin" element={<SanValentin />} />
+      </Routes>
+    </BrowserRouter>
+  </StrictMode>
+);

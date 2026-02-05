@@ -1,0 +1,194 @@
+.san-container {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at top, #2a0f1c, #0f0509);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* importante para la Opción 1 */
+}
+
+.san-card {
+  position: relative;
+  z-index: 1; /* delante de los corazones */
+  background: #14070c;
+  padding: 55px 65px;
+  border-radius: 32px;
+  box-shadow: 0 25px 60px rgba(201, 24, 74, 0.25);
+  text-align: center;
+  min-width: 340px;
+  border: 1px solid rgba(201, 24, 74, 0.35);
+}
+
+.san-card h1 {
+  margin-bottom: 45px;
+  font-size: 2.1rem;
+  color: #c9184a;
+  text-shadow: 0 0 12px rgba(201, 24, 74, 0.35);
+}
+
+.botones {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btn-si {
+  padding: 15px 45px;
+  background: linear-gradient(135deg, #c9184a, #ff4d6d);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 35px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(201, 24, 74, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-si:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(201, 24, 74, 0.6);
+}
+
+.btn-no {
+  position: absolute;
+  padding: 15px 45px;
+  background: #2a2a2a;
+  color: #ddd;
+  border: 1px solid #444;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-no:hover {
+  background: #333;
+}
+
+.mensaje-con-foto {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.mensaje-texto {
+  flex: 1;
+}
+
+.mensaje-foto {
+  width: 130px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(201, 24, 74, 0.4);
+  border: 1px solid rgba(201, 24, 74, 0.4);
+}
+
+/* ========================= */
+/* 📱 AJUSTES MÓVIL SIN CAMBIAR BOTONES */
+/* ========================= */
+
+@media (max-width: 600px) {
+  .san-container {
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .san-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 35px 25px;
+  }
+
+  .botones {
+    gap: 18px;
+  }
+
+  .mensaje-con-foto {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mensaje-foto {
+    width: 170px;
+    margin-top: 15px;
+  }
+}
+
+/* ========================= */
+/* ❤️ Corazones flotando de fondo */
+/* ========================= */
+.hearts-bg {
+  position: absolute; /* importante para opción 1 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0; /* detrás de la card */
+}
+
+.heart {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #c9184a;
+  transform: rotate(-45deg);
+  animation: floatUp 8s infinite ease-in;
+  opacity: 1;
+  box-shadow: 0 0 6px rgba(201, 24, 74, 0.6);
+  bottom: -20px;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #c9184a;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.heart::after {
+  left: 7px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateX(0) rotate(-45deg);
+    bottom: -20px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 110%;
+    transform: translateX(30px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* Posiciones y duraciones aleatorias para los corazones */
+.hearts-bg .heart:nth-child(1)  { left: 5%;  animation-duration: 7s; }
+.hearts-bg .heart:nth-child(2)  { left: 15%; animation-duration: 9s; }
+.hearts-bg .heart:nth-child(3)  { left: 25%; animation-duration: 8s; }
+.hearts-bg .heart:nth-child(4)  { left: 35%; animation-duration: 10s; }
+.hearts-bg .heart:nth-child(5)  { left: 45%; animation-duration: 7.5s; }
+.hearts-bg .heart:nth-child(6)  { left: 55%; animation-duration: 9s; }
+.hearts-bg .heart:nth-child(7)  { left: 65%; animation-duration: 8.5s; }
+.hearts-bg .heart:nth-child(8)  { left: 75%; animation-duration: 9.2s; }
+.hearts-bg .heart:nth-child(9)  { left: 85%; animation-duration: 7.8s; }
+.hearts-bg .heart:nth-child(10) { left: 95%; animation-duration: 8.6s; }
+.hearts-bg .heart:nth-child(11) { left: 50%; animation-duration: 7.9s; }
+.hearts-bg .heart:nth-child(12) { left: 30%; animation-duration: 9.1s; }
