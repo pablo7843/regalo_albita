@@ -27,6 +27,11 @@ import Nieve from "./assets/fotos/enero/nieve.jpeg";
 import Nieve2 from "./assets/fotos/enero/nieve2.jpeg";
 import Tren from "./assets/fotos/enero/tren.jpeg";
 import Tren2 from "./assets/fotos/enero/tren2.jpeg";
+import Ascensor from "./assets/fotos/febrero/ascensor_sexi.jpeg";
+import Ascensor2 from "./assets/fotos/febrero/ascensor_sexo.jpeg";
+import SanValentin from "./assets/fotos/febrero/sanvalentinuwu.jpeg";
+import Zzzzzz from "./assets/fotos/febrero/zzzzzzzz.jpeg";
+import Zzzzzz2 from "./assets/fotos/febrero/zzzzzzz2.jpeg";
 
 /* ========================= */
 /* TIKTOKS ❤️ */
@@ -38,6 +43,7 @@ const tiktoks = [
   "https://www.tiktok.com/@cacota9/video/7567812786428841239",
   "https://www.tiktok.com/@cacota9/video/7565898933654801686",
   "https://www.tiktok.com/@cacota9/video/7545230515310169366",
+  "https://www.tiktok.com/@cacota9/video/7607190823272221974",
 ];
 
 const recuerdos = [
@@ -47,17 +53,17 @@ const recuerdos = [
   { fecha: "Noviembre", titulo: "Segundo mes + Cumplessss", descripcion: "Días especiales que junto a ti lo son aún más.", fotos: [fotoCumpleAlbita, fotoAzucar, fotoCumplePablete, fotoIlusiones, fotoNoviembre] },
   { fecha: "Diciembre", titulo: "Navidad + Polonia", descripcion: "Nuestra primera Navidad juntos.", fotos: [fotoSushi, fotoPis, fotoSpeed, fotoQueso] },
   { fecha: "Enero", titulo: "Nuestro enero", descripcion: "Empezando 2026 juntos ❤️", fotos: [Bocata, Happy, Nieve, Nieve2, Tren, Tren2] },
+  { fecha: "Febrero", titulo: "Primer San Valentín", descripcion: "Primer San Valentín muajajaa 💘", fotos: [Ascensor, Ascensor2, SanValentin, Zzzzzz, Zzzzzz2] },
 ];
 
 /* ========================= */
-/* COMPONENTE TIKTOK (CORREGIDO) */
+/* COMPONENTE TIKTOK */
 /* ========================= */
 
 function TikTokEmbed({ url }) {
   const videoId = url.split("/video/")[1];
 
   useEffect(() => {
-    // Forzamos a TikTok a procesar el nuevo elemento
     if (window.widgets && window.widgets.render) {
       window.widgets.render();
     } else if (window.tiktok && window.tiktok.render) {
@@ -87,15 +93,12 @@ function App() {
   const [tiempo, setTiempo] = useState({ dias: 0, horas: 0, minutos: 0, segundos: 0 });
   const navigate = useNavigate();
 
-  /* Script oficial TikTok */
   useEffect(() => {
     const script = document.createElement("script");  
     script.src = "https://www.tiktok.com/embed.js";
     script.async = true;
     document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
+    return () => document.body.removeChild(script);
   }, []);
 
   useEffect(() => {
@@ -129,16 +132,7 @@ function App() {
             <span>{tiempo.segundos}s</span>
           </div>
         </div>
-        <motion.button
-          className="btn-sanvalentin"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => navigate("/sanvalentin")}
-        >
-          💘 Pulsar aquí
-      </motion.button>
       </header>
-
 
       {/* TIMELINE */}
       <div className="timeline-wrapper">
@@ -176,19 +170,8 @@ function App() {
       {/* MODAL RECUERDOS */}
       <AnimatePresence>
         {recuerdoActivo && (
-          <motion.div
-            className="modal-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setRecuerdoActivo(null)}
-          >
-            <motion.div
-              className="modal-content"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              onClick={(e) => e.stopPropagation()}
-            >
+          <motion.div className="modal-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setRecuerdoActivo(null)}>
+            <motion.div className="modal-content" initial={{ scale: 0.8 }} animate={{ scale: 1 }} onClick={(e) => e.stopPropagation()}>
               <div className="fotos-grid">
                 {recuerdoActivo.fotos.map((img, i) => (
                   <img key={i} src={img} alt="Recuerdo" className="foto-individual" />
@@ -196,6 +179,18 @@ function App() {
               </div>
               <h3>{recuerdoActivo.titulo}</h3>
               <p>{recuerdoActivo.descripcion}</p>
+
+              {recuerdoActivo.fecha === "Febrero" && (
+                <motion.button
+                  className="btn-sanvalentin"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate("/sanvalentin")}
+                >
+                  💘 Ver San Valentín
+                </motion.button>
+              )}
+
               {recuerdoActivo.fecha === "Diciembre" && (
                 <motion.button
                   className="btn-carta-especial"
@@ -205,6 +200,7 @@ function App() {
                   🎄 Leer carta de Navidad
                 </motion.button>
               )}
+
               <button className="close-btn" onClick={() => setRecuerdoActivo(null)}>Volver</button>
             </motion.div>
           </motion.div>
@@ -214,19 +210,8 @@ function App() {
       {/* CARTA */}
       <AnimatePresence>
         {mostrarCarta && (
-          <motion.div
-            className="modal-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setMostrarCarta(false)}
-          >
-            <motion.div
-              className="carta-navidena"
-              initial={{ y: 50 }}
-              animate={{ y: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
+          <motion.div className="modal-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMostrarCarta(false)}>
+            <motion.div className="carta-navidena" initial={{ y: 50 }} animate={{ y: 0 }} onClick={(e) => e.stopPropagation()}>
               <div className="decoracion-carta">🎄✨</div>
               <h2>Querida Alba,</h2>
               <div className="texto-carta">
